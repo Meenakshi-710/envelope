@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Envelope Animation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #2f343a;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .scene {
+      position: relative;
+    }
+
+    .envelope-wrapper {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .envelope {
+      width: 260px;
+      height: 150px;
+      background-color: #e74c3c;
+      border-radius: 4px;
+      position: relative;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .triangle-left {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-top: 75px solid rgba(0, 0, 0, 0.12);
+      border-right: 130px solid transparent;
+    }
+
+    .triangle-right {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-top: 75px solid rgba(0, 0, 0, 0.12);
+      border-left: 130px solid transparent;
+    }
+
+    .flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 130px solid transparent;
+      border-right: 130px solid transparent;
+      border-top: 130px solid #f15945;
+      transform-origin: top center;
+      transition: transform 0.6s;
+    }
+
+    .letter {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 10px;
+      height: 110px;
+      background-color: white;
+      border-radius: 4px;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+      transform: translateY(80px) translateZ(-50px);
+      opacity: 0;
+      transition: transform 0.7s, opacity 0.5s;
+    }
+
+    .envelope-wrapper:hover .flap {
+      transform: rotateX(-150deg);
+    }
+
+    .envelope-wrapper:hover .letter {
+      transform: translateY(-90px) translateZ(50px);
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="scene">
+    <div class="envelope-wrapper">
+      <div class="envelope">
+        <div class="triangle-left"></div>
+        <div class="triangle-right"></div>
+        <div class="flap">
+        </div>
+        <div class="letter"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
