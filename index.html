@@ -18,6 +18,21 @@
       justify-content: center;
       background: #2f343a;
       font-family: system-ui, sans-serif;
+      position: relative;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+      height: 25px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 50%;
+      filter: blur(12px);
+      z-index: 0;
     }
 
     .scene {
@@ -34,20 +49,19 @@
     }
 
     .card {
-      width: 260px;
-      height: 260px;
+      width: 500px;
+      height: 400px;
       display: flex;
       align-items: end;
-      justify-content: end;
+      justify-content: center;
       overflow: hidden;
     }
 
     .envelope {
-      width: 260px;
-      height: 150px;
+      width: 400px;
+      height: 200px;
       border-radius: 4px;
       background: linear-gradient(to bottom, #f85c4c, #cf4335);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
       position: relative;
     }
 
@@ -82,8 +96,8 @@
       position: absolute;
       bottom: 0;
       width: 100%;
-      height: 60%;
-      background: #d14536;
+      height: 61%;
+      background: #e95544;
       clip-path: polygon(0 100%, 100% 100%, 50% 0);
       z-index: 12;
     }
@@ -120,8 +134,8 @@
       position: absolute;
       left: 50%;
       top: 66%;
-      width: 240px;
-      height: 110px;
+      width: 320px;
+      height: 300px;
       transform: translateX(-50%);
       background: white;
       border-radius: 6px;
@@ -130,22 +144,55 @@
       box-shadow: 0 12px 30px rgba(0,0,0,0.35);
     }
 
-    .letter::before,
+    .letter::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 12px;
+      background: repeating-linear-gradient(
+        45deg,
+        #E53935 0px,
+        #E53935 14px,
+        white 14px,
+        white 28px
+      );
+      border-radius: 6px 6px 0 0;
+    }
+
     .letter::after {
       content: "";
       position: absolute;
-      left: 14%;
-      right: 14%;
-      height: 3px;
-      border-radius: 999px;
-      background: #f3e3d3;
+      top: 24px;
+      left: 6px;
+      width: 40%;
+      height: 12px;
+      background: #E53935;
     }
 
-    .letter::before { top: 28%; }
-    .letter::after { top: 42%; }
+    .letter-bar {
+      position: absolute;
+      top: 45px;
+      left: 6px;
+      width: 30%;
+      height: 12px;
+      background: #E53935;
+    }
+
+    .letter-seal {
+      position: absolute;
+      bottom: 90px;
+      right: 30px;
+      width: 70px;
+      height: 60px;
+      background: rgba(255, 182, 193, 0.6);
+      border-radius: 50%;
+      z-index: 1;
+    }
 
     .envelope-wrapper:hover .letter {
-      transform: translate(-50%, -150px);
+      transform: translate(-50%, -280px);
     }
 
     .envelope-wrapper:hover .envelope-flap {
@@ -169,7 +216,10 @@
           <div class="envelope-bottom"></div>
           <div class="envelope-flap"></div>
           <div class="envelope-highlight"></div>
-          <div class="letter"></div>
+          <div class="letter">
+            <div class="letter-bar"></div>
+            <div class="letter-seal"></div>
+          </div>
         </div>
       </div>
     </div>
